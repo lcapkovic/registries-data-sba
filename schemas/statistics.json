@@ -2,29 +2,73 @@
 	"$schema": "http://json-schema.org/schema#",
 	"id": "uri://registries/statistics",
 	"view": {
-	"title": "statistics",
-	"transCode":"schema.statistics.view",
-	"_security": {
-		"_read": {
-			"_static":["Registry - read"]
-		}
-	},
-	"properties":{
-
-		"baseData": {
-				"title": "Základné statistiky",
+		"title": "statistics",
+		"transCode":"schema.statistics.view",
+		"security": {
+			"read": {
+				"static":["Registry - read"]
+			}
+		},
+		"properties":{
+			"baseData": {
+				"title": "Základné štatistiky",
 				"transCode": "schema.statistics.baseData",
 				"type": "object",
 				"properties":{
 					"numberOfMembers":{
-						"title":"Pocet clenov",
+						"title":"Počet členov",
 						"transCode":"schema.statistics.member.count",
-						"type":"Decimal"
+						"type":"number",
+						"readOnly":true
 					},
 					"numberOfWomen":{
-						"title":"Pocet zien",
+						"title":"Počet žien",
 						"transCode":"schema.statistics.women.count",
-						"type":"Decimal"
+						"type":"number",
+						"readOnly":true
+					}
+				}
+			},
+			"fees": {
+				"title": "Poplatky",
+				"transCode": "schema.statistics.fees",
+				"type": "object",
+				"properties":{
+					"expectedCount":{
+						"title":"Pocet vystavených",
+						"transCode":"schema.statistics.fees.expected.count",
+						"type":"number",
+						"readOnly":true
+					},
+					"expectedSum":{
+						"title":"Suma vystavených",
+						"transCode":"schema.statistics.fees.expected.sum",
+						"type":"number",
+						"readOnly":true
+					},
+					"paidCount":{
+						"title":"Pocet zaplatených",
+						"transCode":"schema.statistics.fees.paid.count",
+						"type":"number",
+						"readOnly":true
+					},
+					"paidSum":{
+						"title":"Suma zaplatených",
+						"transCode":"schema.statistics.fees.paid.sum",
+						"type":"number",
+						"readOnly":true
+					},
+					"overdueCount":{
+						"title":"Pocet po splatnosti",
+						"transCode":"schema.statistics.fees.overdue.count",
+						"type":"number",
+						"readOnly":true
+					},
+					"overdueSum":{
+						"title":"Suma po splatnosti",
+						"transCode":"schema.statistics.fees.overdue.sum",
+						"type":"number",
+						"readOnly":true
 					}
 				}
 			}

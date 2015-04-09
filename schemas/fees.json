@@ -1,0 +1,187 @@
+{
+	"$schema": "http://json-schema.org/schema#",
+	"id": "uri://registries/fees#",
+
+	"blocks": {
+		"fee": {
+			"title": "ZÁKLADNÍ INFORMACE",
+			"transCode": "schema.fees.baseData",
+			"type": "object",
+			"properties": {
+				"club": {
+					"title": "Klub",
+					"transCode": "schema.org.club.name",
+					"type": "object",
+					"required": true,
+					"objectLink2": {
+						"schema":"uri://registries/organizations#views/club/view",
+						"fields":{
+							"name": "club.name"
+						}
+					}
+				},
+				"setupDate": {
+					"extends":"uri://registries/commontypes#blocks/date",
+					"title": "Datum vystavení",
+					"transCode": "schema.fees.baseData.setupDate",
+					"required": true
+				},
+				"variableSymbol": {
+					"title": "Variabilní symbol",
+					"transCode": "schema.fees.baseData.variableSymbol",
+					"type": "string"
+				},
+				"dueDate": {
+					"extends":"uri://registries/commontypes#blocks/date",
+					"title": "Datum splatnosti",
+					"transCode": "schema.fees.baseData.dueDate"
+				},
+				"membershipFeePaid": {
+					"title": "Zaplacená částka",
+					"transCode": "schema.fees.baseData.membershipFeePaid",
+					"type": "number"
+				},
+				"feeType": {
+					"title": "Typ poplatku",
+					"transCode": "schema.fees.baseData.feeType",
+					"type": "string",
+					"enum": [
+						"Vklad do súťaže",
+						"Pokuta",
+						"Hráčska licencia",
+						"Prestupy hráčov",
+						"Tlačivá",
+						"Iné",
+						"Odvolanie",
+						"Predohrávka",
+						"Trénerské poplatky"
+					],
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"paymentMethod": {
+					"title": "Spôsob úhrady",
+					"transCode": "schema.fees.baseData.paymentMethod",
+					"type": "string",
+					"enum": [
+						"Hotovosť",
+						"Bankový prevod",
+						"Dobierka",
+						"Premlčané",
+						"Vrátená platba",
+						"Zostatok z h.o."
+					],
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				},
+				"dateOfPayment": {
+					"extends":"uri://registries/commontypes#blocks/date",
+					"title": "Dátum zaplatenia",
+					"transCode": "schema.fees.baseData.dateOfPayment"
+				},
+				"notes": {
+					"title": "Poznámka",
+					"transCode": "schema.fees.baseData.notes",
+					"type": "string"
+				},
+				"feePaymentStatus": {
+					"title": "Stav",
+					"transCode": "schema.fees.baseData.feePaymentStatus",
+					"type": "string",
+					"enum": ["created",
+							"refunded",
+							"differs",
+							"overdue",
+							"canceled"
+
+					],
+					"enumTransCodes": [
+						"schema.fees.baseData.feePaymentStatus.created",
+						"schema.fees.baseData.feePaymentStatus.refunded",
+						"schema.fees.baseData.feePaymentStatus.differs",
+						"schema.fees.baseData.feePaymentStatus.overdue",
+						"schema.fees.baseData.feePaymentStatus.canceled"
+					],
+					"render": {
+						"component": "psui-selectbox",
+						"searchable": true
+					}
+				}
+			}
+		}
+	},
+
+	"models": {
+		"fee": {
+			"title": "Příspěvek",
+			"transCode": "schema.fees.title",
+			"table": "fees",
+			"security": {
+				"create": {
+					"static": [
+						"Registry - write"
+					]
+				},
+				"read": {
+					"static": [
+						"Registry - read"
+					]
+				},
+				"modify": {
+					"static": [
+						"Registry - write"
+					]
+				}
+			},
+			"fireEvents":{
+				"create": "event-fee-created",
+				"update": "event-fee-updated"
+			},
+			"properties": {
+				"baseData": {
+					"extends":"uri://registries/fees#blocks/fee"
+				}
+			}
+		}
+	},
+
+	"views": {
+		"fee": {
+			"new":{
+				"extends":"uri://registries/fees#models/fee"
+			},
+			"view": {
+				"extends":"uri://registries/fees#models/fee"
+			},
+			"search": {
+				"extends":"uri://registries/fees#models/fee",
+				"listFields": [
+					{
+						"field": "baseData.club.refData.name",
+						"title": "Klub",
+						"transCode": "schema.org.club.name"
+					},
+					{
+						"field": "baseData.membershipFeePaid",
+						"title": "Zaplacená částka",
+						"transCode": "schema.fees.baseData.membershipFeePaid"
+					},
+					{
+						"field": "baseData.dateOfPayment",
+						"title": "Datum zaplacení",
+						"transCode": "schema.fees.baseData.dateOfPayment"
+					},
+					{
+						"field": "baseData.dueDate",
+						"title": "Datum splatnosti",
+						"transCode": "schema.fees.baseData.dueDate"
+					}
+				]
+			}
+		}
+	}
+}

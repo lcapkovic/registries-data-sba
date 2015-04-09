@@ -4,9 +4,8 @@
 	"type": "object",
 	"country":{
 		"title": "Štátna príslušnosť",
-		"xxtransCode": "schema.people.baseData.nationality",
-        "type": "string",
-		"default": "SVK",
+		"transCode": "schema.people.baseData.nationality",
+		"type": "string",
 		"enum":[
 			"SVK",
 			"AFG",
@@ -512,7 +511,7 @@
 				"schemas.countries.enum.ZWE"
 			
 		],
-        "required": true,
+		"required": true,
 		"render": {
 			"component": "psui-selectbox",
 			"searchable": true
