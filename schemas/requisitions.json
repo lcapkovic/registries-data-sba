@@ -155,6 +155,15 @@
 			},
 			"search": {
 				"extends":"uri://registries/requisitions#models/requisition",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequisitions~23views~2Frequisition/{{model.id}}"
+						}
+					}
+				],
 				"listFields": [
 					{
 						"field": "baseData.setupDate",
@@ -165,11 +174,11 @@
 						"transCode": "schema.requisitions.basedata.subject"
 					},
 					{
-						"field": "baseData.applicant.refData.surName",
+						"field": "baseData.applicant",
 						"transCode": "schema.requisitions.basedata.applicant"
 					},
 					{
-						"field": "baseData.assignedTo.refData.surName",
+						"field": "baseData.assignedTo",
 						"transCode": "schema.requisitions.basedata.assignedto"
 					},
 					{
@@ -218,6 +227,15 @@
 				}
 			},
 			"search":{
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequisitions~23views~2FrequisitionApplicant/{{model.id}}"
+						}
+					}
+				],
 				"listFields": [
 					{
 						"field": "baseData.setupDate",
@@ -230,7 +248,7 @@
 						"transCode": "schema.requisitions.basedata.subject"
 					},
 					{
-						"field": "baseData.assignedTo.refData.surName",
+						"field": "baseData.assignedTo",
 						"title": "Riešiteľ",
 						"transCode": "schema.requisitions.basedata.assignedto"
 					},
@@ -262,10 +280,19 @@
 							"modifiedOn":{"readOnly":true}
 						}
 					}
-
 				}
+			},
+			"search":{
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequisitions~23views~2FrequisitionSolver/{{model.id}}"
+						}
+					}
+				]
 			}
-
 		}
 	}
 }

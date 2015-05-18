@@ -1043,6 +1043,15 @@
 			},
 			"search": {
 				"extends": "uri://registries/people#models/fullperson",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Ffullperson/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"photoInfo": null
 				},
@@ -1084,6 +1093,15 @@
 			},
 			"search": {
 				"extends": "uri://registries/people#models/coach",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Fcoach/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"photoInfo": null
 				},
@@ -1125,6 +1143,15 @@
 			},
 			"search": {
 				"extends": "uri://registries/people#models/referee",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Freferee/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"photoInfo": null
 				},
@@ -1166,6 +1193,15 @@
 			},
 			"search": {
 				"extends": "uri://registries/people#models/refereeAssistant",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2FrefereeAssistant/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"photoInfo": null
 				},
@@ -1215,6 +1251,15 @@
 			},
 			"search": {
 				"extends": "uri://registries/people#models/officer",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Fofficer/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"photoInfo": null
 				},
@@ -1256,6 +1301,15 @@
 			},
 			"search": {
 				"extends": "uri://registries/people#models/administrativeStaff",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2FadministrativeStaff/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"photoInfo": null
 				},
@@ -1297,6 +1351,15 @@
 			},
 			"search": {
 				"extends": "uri://registries/people#models/medic",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Fmedic/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"photoInfo": null
 				},
@@ -1338,6 +1401,15 @@
 			},
 			"search": {
 				"extends": "uri://registries/people#models/statistic",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Fstatistic/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"photoInfo": null
 				},
@@ -1389,6 +1461,15 @@
 			},
 			"search": {
 				"extends": "uri://registries/people#models/player",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Fpeople~23views~2Fplayer/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"photoInfo": null
 				},
@@ -1414,12 +1495,12 @@
 						"transCode": "schema.people.birthDate"
 					},
 					{
-						"field": "player.clubOfFirstRegistration.refData.name",
+						"field": "player.clubOfFirstRegistration",
 						"title": "Materský klub",
 						"transCode": "schema.people.player.clubOfFirstRegistration"
 					},
 					{
-						"field": "player.club.refData.name",
+						"field": "player.club",
 						"title": "Klubová príslušnosť",
 						"transCode": "schema.people.player.club"
 					}

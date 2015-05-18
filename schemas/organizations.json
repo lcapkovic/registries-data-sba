@@ -559,6 +559,15 @@
 			},
 			"search": {
 				"extends": "uri://registries/organizations#models/club",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Forganizations~23views~2Fclub/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"logoInfo": null
 				},
@@ -569,7 +578,7 @@
 						"transCode": "schema.org.club.name"
 					},
 					{
-						"field": "club.association.refData.name",
+						"field": "club.association",
 						"title": "Zväz",
 						"transCode": "schema.org.club.association"
 					},
@@ -600,6 +609,15 @@
 			},
 			"search": {
 				"extends": "uri://registries/organizations#models/company",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Forganizations~23views~2Fcompany/{{model.id}}"
+						}
+					}
+				],
 				"listFields": [
 					{
 						"field": "club.codeOfClub",
@@ -621,6 +639,15 @@
 			},
 			"search": {
 				"extends": "uri://registries/organizations#models/association",
+				"clientActions": [
+					{
+						"__DIRECTIVE__": "schema-redirect-link",
+						"title": "Zobraziť",
+						"params": {
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2Forganizations~23views~2Fassociation/{{model.id}}"
+						}
+					}
+				],
 				"properties": {
 					"logoInfo": null
 				},
