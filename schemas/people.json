@@ -1021,14 +1021,7 @@
 		"fullperson": {
 			"new": {
 				"extends": "uri://registries/people#views/fullperson/view",
-				"saveBySchema": "uri://registries/people#views/fullperson/view",
-				"properties": {
-					"baseData": {
-						"properties": {
-							"registrationID": null
-						}
-					}
-				}
+				"saveBySchema": "uri://registries/people#views/fullperson/view"
 			},
 			"view": {
 				"extends": "uri://registries/people#models/fullperson",

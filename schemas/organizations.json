@@ -29,8 +29,8 @@
 				"codeOfClub": {
 					"title": "Kód klubu",
 					"transCode": "schema.org.club.codeOfClub",
-					"type": "string",
-					"sequence": "clubs"
+					"type": "string"
+					
 				},
 				"name": {
 					"title": "Názov klubu",

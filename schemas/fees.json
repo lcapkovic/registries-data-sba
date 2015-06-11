@@ -16,7 +16,8 @@
 					"objectLink2": {
 						"schema":"uri://registries/organizations#views/club/view",
 						"fields":{
-							"name": "club.name"
+							"name": "club.name",
+							"city": "clubAddress.city"
 						}
 					}
 				},
