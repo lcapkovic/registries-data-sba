@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/schema#",
-	"id": "uri://registries/requests#",
+	"id": "uri://registries/generalRequests#",
 
 	"blocks": {
 		"attachments":{
@@ -28,7 +28,7 @@
 				}
 			}
 		},
-		"baseData": {
+		"requestData": {
 			"title": "ZÁKLADNÍ INFORMACE",
 			"transCode": "schema.requests.basedata",
 			"type": "object",
@@ -111,7 +111,7 @@
 		"request": {
 			"title":"Žiadosť",
 			"transCode": "schema.requests.title",
-			"table": "requests",
+			"table": "generalRequests",
 			"security": {
 				"create": {
 					"static": [
@@ -134,69 +134,23 @@
 				"update": "event-request-updated"
 			},
 			"properties": {
-				"baseData": {
-					"extends":"uri://registries/requests#blocks/baseData"
+				"requestData": {
+					"extends":"uri://registries/generalRequests#blocks/requestData"
 				},
 				"attachments": {
-					"extends":"uri://registries/requests#blocks/attachments"
+					"extends":"uri://registries/generalRequests#blocks/attachments"
 				}
 			}
 		}
 	},
 
 	"views": {
-		"request": {
-			"new":{
-				"extends":"uri://registries/requests#models/request",
-				"saveBySchema":"uri://registries/requests#views/request/view"
-			},
-			"view": {
-				"extends":"uri://registries/requests#models/request"
-			},
-			"search": {
-				"extends":"uri://registries/requests#models/request",
-				"clientActions": [
-					{
-						"__DIRECTIVE__": "schema-redirect-link",
-						"title": "Zobraziť",
-						"params": {
-							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequests~23views~2Frequest/{{model.id}}"
-						}
-					}
-				],
-				"listFields": [
-					{
-						"field": "baseData.setupDate",
-						"transCode": "schema.requests.basedata.setupdate"
-					},
-					{
-						"field": "baseData.subject",
-						"transCode": "schema.requests.basedata.subject"
-					},
-					{
-						"field": "baseData.applicant",
-						"transCode": "schema.requests.basedata.applicant"
-					},
-					{
-						"field": "baseData.assignedTo",
-						"transCode": "schema.requests.basedata.assignedto"
-					},
-					{
-						"field": "baseData.modifiedOn",
-						"transCode": "schema.requests.basedata.modifiedOn"
-					},
-					{
-						"field": "baseData.status",
-						"transCode": "schema.requests.basedata.status"
-					}
-				]
-			}
-		},
 		"requestApplicant":{
-			"extends":"uri://registries/requests#views/request",
 			"new":{
+				"extends":"uri://registries/generalRequests#models/request",
+				"saveBySchema":"uri://registries/generalRequests#views/requestApplicant/view",
 				"properties":{
-					"baseData": {
+					"requestData": {
 						"properties": {
 							"applicant":null,
 							"assignedTo":null,
@@ -211,8 +165,9 @@
 				}
 			},
 			"view":{
+				"extends":"uri://registries/generalRequests#models/request",
 				"properties":{
-					"baseData": {
+					"requestData": {
 						"properties": {
 							"applicant":{"readOnly":true},
 							"assignedTo":{"readOnly":true},
@@ -227,33 +182,34 @@
 				}
 			},
 			"search":{
+				"extends":"uri://registries/generalRequests#models/request",
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "schema-redirect-link",
 						"title": "Zobraziť",
 						"params": {
-							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequests~23views~2FrequestApplicant/{{model.id}}"
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2FgeneralRequests~23views~2FrequestApplicant/{{model.id}}"
 						}
 					}
 				],
 				"listFields": [
 					{
-						"field": "baseData.setupDate",
+						"field": "requestData.setupDate",
 						"title": "Dátum vystavenia",
 						"transCode": "schema.requests.basedata.setupdate"
 					},
 					{
-						"field": "baseData.subject",
+						"field": "requestData.subject",
 						"title": "Predmet žiadosti",
 						"transCode": "schema.requests.basedata.subject"
 					},
 					{
-						"field": "baseData.assignedTo",
+						"field": "requestData.assignedTo",
 						"title": "Riešiteľ",
 						"transCode": "schema.requests.basedata.assignedto"
 					},
 					{
-						"field": "baseData.modifiedOn",
+						"field": "requestData.modifiedOn",
 						"title": "Dátum poslednej zmeny",
 						"transCode": "schema.requests.basedata.modifiedOn"
 					}
@@ -263,11 +219,10 @@
 
 		},
 		"requestSolver":{
-			"extends":"uri://registries/requests#views/request",
-			"new":null,
 			"view":{
+				"extends":"uri://registries/generalRequests#models/request",
 				"properties":{
-					"baseData": {
+					"requestData": {
 						"properties": {
 							"applicant":{"readOnly":true},
 							"subject":{"readOnly":true},
@@ -283,13 +238,40 @@
 				}
 			},
 			"search":{
+				"extends":"uri://registries/generalRequests#models/request",
 				"clientActions": [
 					{
 						"__DIRECTIVE__": "schema-redirect-link",
 						"title": "Zobraziť",
 						"params": {
-							"path": "/registry/view/uri~3A~2F~2Fregistries~2Frequests~23views~2FrequestSolver/{{model.id}}"
+							"path": "/registry/view/uri~3A~2F~2Fregistries~2FgeneralRequests~23views~2FrequestSolver/{{model.id}}"
 						}
+					}
+				],
+				"listFields": [
+					{
+						"field": "requestData.setupDate",
+						"transCode": "schema.requests.basedata.setupdate"
+					},
+					{
+						"field": "requestData.subject",
+						"transCode": "schema.requests.basedata.subject"
+					},
+					{
+						"field": "requestData.applicant",
+						"transCode": "schema.requests.basedata.applicant"
+					},
+					{
+						"field": "requestData.assignedTo",
+						"transCode": "schema.requests.basedata.assignedto"
+					},
+					{
+						"field": "requestData.modifiedOn",
+						"transCode": "schema.requests.basedata.modifiedOn"
+					},
+					{
+						"field": "requestData.status",
+						"transCode": "schema.requests.basedata.status"
 					}
 				]
 			}

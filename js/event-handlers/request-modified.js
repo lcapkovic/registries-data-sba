@@ -24,7 +24,7 @@
 
 		var requestsDao = new universalDaoModule.UniversalDao(
 			this.ctx.mongoDriver,
-			{collectionName: 'requests'}
+			{collectionName: 'generalRequests'}
 		);
 
 		var userDao = new universalDaoModule.UniversalDao(
@@ -48,9 +48,9 @@
 			var entity = event.entity;
 			var solverAddress=this.ctx.config.mails.requestSolverAddress;
 
-			entity.baseData.setupDate=dateUtils.nowToReverse();
-			entity.baseData.status='created';
-			entity.baseData.applicant={schema:"uri://registries/people#views/fullperson/view",registry:'people',oid:event.user.id};
+			entity.requestData.setupDate=dateUtils.nowToReverse();
+			entity.requestData.status='created';
+			entity.requestData.applicant={schema:"uri://registries/people#views/fullperson/view",registry:'people',oid:event.user.id};
 
 
 				var qf=QueryFilter.create();
@@ -65,9 +65,9 @@
 					// assign to and send mail.
 					if (data.length==1){
 						var solver=data[0];
-						entity.baseData.assignedTo={schema:"uri://registries/people#views/fullperson/view",registry:'people',oid:solver.id};
+						entity.requestData.assignedTo={schema:"uri://registries/people#views/fullperson/view",registry:'people',oid:solver.id};
 					}
-					self.sendRequestCreated(solverAddress,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.baseData.subject,self.ctx.config.serviceUrl+'/requests/'+entity.id);
+					self.sendRequestCreated(solverAddress,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.requestData.subject,self.ctx.config.serviceUrl+'/requests/'+entity.id);
 
 					requestsDao.save(entity,function(err,data){
 						if (err) {
@@ -90,11 +90,11 @@
 			var entity = event.entity;
 			// var solverAddress=this.ctx.config.mails.requestSolverAddress;
 
-			entity.baseData.applicant={schema:"uri://registries/people#views/fullperson/view",registry:'people',oid:event.user.id};
+			entity.requestData.applicant={schema:"uri://registries/people#views/fullperson/view",registry:'people',oid:event.user.id};
 			var solverAddress=self.ctx.config.mails.requestSolverAddress;
 
-				if (entity.baseData.assignedTo){
-					userDao.get(entity.baseData.assignedTo.oid, function(err, solver) {
+				if (entity.requestData.assignedTo){
+					userDao.get(entity.requestData.assignedTo.oid, function(err, solver) {
 						if (err){
 							log.error(err);
 							return;
@@ -102,21 +102,21 @@
 
 						// assign to and send mail.
 						if (solver){
-							self.sendRequestModified(solver.systemCredentials.login.email,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.baseData.subject,self.ctx.config.serviceUrl+'/requests/'+entity.id);
+							self.sendRequestModified(solver.systemCredentials.login.email,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.requestData.subject,self.ctx.config.serviceUrl+'/requests/'+entity.id);
 						}
 					});
 
 				} else {
-					self.sendRequestModified(this.ctx.config.mails.requestSolverAddress,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.baseData.subject,self.ctx.config.serviceUrl+'/requests/'+entity.id);
+					self.sendRequestModified(this.ctx.config.mails.requestSolverAddress,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.requestData.subject,self.ctx.config.serviceUrl+'/requests/'+entity.id);
 				}
 
-				if (entity.baseData.applicant){
-							userDao.get(entity.baseData.applicant.oid,function(err,applicant){
+				if (entity.requestData.applicant){
+							userDao.get(entity.requestData.applicant.oid,function(err,applicant){
 								if (err){
 									log.error(err);
 									return;
 								}
-								self.sendRequestModified(applicant.systemCredentials.login.email,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.baseData.subject,self.ctx.config.serviceUrl+'/requests/'+entity.id);
+								self.sendRequestModified(applicant.systemCredentials.login.email,self.ctx.config.webserverPublicUrl,event.user.baseData.name.v+' '+event.user.baseData.surName.v,entity.requestData.subject,self.ctx.config.serviceUrl+'/requests/'+entity.id);
 							});
 				}
 
