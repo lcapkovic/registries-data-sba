@@ -13,16 +13,26 @@
 					"type": "array",
 					"items": {
 						"file": {
-							"properties":{
-								"name":{"type":"string"},
-								"size":{"type":"number"},
-								"createdOn":{"type":"string"},
-								"mime":{"type":"string"}
+							"title": "Súbor",
+							"transCode": "schema.requests.file",
+							"required": false,
+							"render": {
+								"component": "xpsui-uploadable-file"
+							},
+							"properties": {
+								"name": {
+									"type": "string"
+								},
+								"size": {
+									"type": "number"
+								},
+								"createdOn": {
+									"type": "string"
+								},
+								"mime": {
+									"type": "string"
+								}
 							}
-						},
-						"required": false,
-						"render": {
-							"component":"xpsui-uploadable-file"
 						}
 					}
 				}

@@ -234,6 +234,7 @@
 		"schema.org.club.clubEmail":"Email",
 		"schema.org.clubStatutory":"Štatutári klubu",
 		"schema.org.clubStatutory.person":"Osoby",
+		"schema.org.array.clubStatutory":"Štatutár",
 		
 		"schema.association.title":"Zväz",
 		"schema.org.assoc.associationName":"Názov zväzu",
@@ -375,6 +376,7 @@
 		"schema.roster.aCoach":"Asistent trénera",
 		"schema.roster.listOfPlayers":"Zoznam hráčov",
 		"schema.roster.players":"Hráči",
+		"schema.roster.player":"Hráč",
 
 		"schema.ageCategory.title":"Veková kategória",
 		"schema.ageCategory.baseData": "Základné údaje",
@@ -439,6 +441,7 @@
 		"schema.nomination.officer2":"Funkcionár",
 		"schema.nomination.listOfPlayers":"Nominácia hráčov",
 		"schema.nomination.players":"Hráči",
+		"schema.nomination.player":"Hráč",
 		"schema.nomination.state":"Stav",
 
 		"schema.requests.title":"Žiadosť",
@@ -453,6 +456,7 @@
 		"schema.requests.basedata.status.processing":"Spracovávaná",
 		"schema.requests.basedata.status.closed":"Uzavretá",
 		"schema.requests.attachments":"Prílohy",
+		"schema.requests.file":"Súbor",
 		"schema.requests.basedata.responsetext":"Odpoveď",
 		"schema.requests.basedata.modifiedOn":"Čas poslednej zmeny",
 
@@ -800,6 +804,7 @@
 		"schema.org.club.clubEmail":"Email",
 		"schema.org.clubStatutory":"Štatutári klubu",
 		"schema.org.clubStatutory.person":"Osoby",
+		"schema.org.array.clubStatutory":"Štatutár",
 
 		"schema.member.title": "Môj profil",
 		"schema.member.view":"Profil člena",
@@ -906,6 +911,7 @@
 		"schema.nomination.officer2":"Funkcionár",
 		"schema.nomination.listOfPlayers":"Nominácia hráčov",
 		"schema.nomination.players":"Hráči",
+		"schema.nomination.player":"Hráč",
 		"schema.nomination.state":"Stav",
 
 		"schema.requests.title":"Žádost",
@@ -920,6 +926,7 @@
 		"schema.requests.basedata.status.processing":"Spracovávaná",
 		"schema.requests.basedata.status.closed":"Uzavretá",
 		"schema.requests.attachments":"Přílohy",
+		"schema.requests.file":"Soubor",
 		"schema.requests.basedata.responsetext":"Odpověď",
 		"schema.requests.basedata.modifiedOn":"Čas poslednej zmeny"
 	});
