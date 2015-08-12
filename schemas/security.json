@@ -136,7 +136,7 @@
 						"type": "array",
 						"items": {
 							"applySchema": "string",
-							"criteria": {
+							"crits": {
 								"type": "array",
 								"items": {
 									"f": "string",
@@ -149,7 +149,8 @@
 												"name":"string"
 											}
 										}
-									}
+									},
+									"expr": "string"
 								}
 							}
 						}
